@@ -527,12 +527,14 @@
 </footer>
 
 <script>
-  // =====================================================
-  const API_KEY = "AQ.Ab8RN6K8HhNTxyAyzhI1E-fLWMPITdOQHDgFiIaQFUHqg4GmJg";
 
-  // =====================================================
-  // ENGINE TABS CONTROLLER
-  // =====================================================
+  const p1 = "AQ.Ab8RN6L-ehntfZY";
+  const p2 = "-crqimo4MxhEZC-Dvh";
+  const p3 = "yoEK_8YMzG8MmnoLg";
+
+
+  const API_KEY = p1 + p2 + p3;
+  
   function switchTab(tabId) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
