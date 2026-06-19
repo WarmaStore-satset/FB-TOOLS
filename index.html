@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FB Creator Tools Gratis</title>
+  <style>
+    /* === CLEAN MODERN DESIGN BY RUMAHWEB === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --surface2: #f8fafc;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-glow: rgba(37, 99, 235, 0.1);
+      --green: #16a34a;
+      --green-dim: #f0fdf4;
+      --green-border: #bbf7d0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-faint: #94a3b8;
+      --radius: 16px;
+      --radius-sm: 12px;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    /* === HEADER === */
+    .header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: var(--accent-glow);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .header h1 span {
+      color: var(--accent);
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    /* === TABS NAV === */
+    .tabs-nav {
+      display: flex;
+      gap: 10px;
+      padding: 20px 16px 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    /* === MAIN CONTAINER === */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    /* === CARD CARDS === */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* === FORMS === */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    textarea, input[type="number"], select {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--font);
+      padding: 12px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus, input[type="number"]:focus, select:focus {
+      border-color: var(--accent);
+      background: white;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* === BUTTONS === */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      border: none;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background-color 0.2s;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: var(--accent-hover);
+    }
+
+    .btn-primary:disabled {
+      background: var(--text-faint);
+      cursor: not-allowed;
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-green:hover {
+      background: #11813b;
+    }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-copy.copied {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--green-dim);
+    }
+
+    /* === GENERATOR LOADING & RESULTS === */
+    .loader {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    .loader.show { display: flex; }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .results-wrapper { display: none; }
+    .results-wrapper.show { display: block; }
+
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding: 0 4px;
+    }
+
+    .results-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .caption-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .caption-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .caption-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      white-space: pre-wrap;
+    }
+
+    .caption-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    .error-box {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-size: 13px;
+      color: #dc2626;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    .error-box.show { display: block; }
+
+    /* === ENGAGEMENT STATS === */
+    .calc-container {
+      background: var(--green-dim);
+      border: 1px solid var(--green-border);
+      padding: 18px;
+      border-radius: var(--radius);
+      margin-top: 20px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 6px;
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .er-badge {
+      display: inline-block;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+    .er-badge span { color: var(--text); }
+
+    .er-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 480px) {
+      .input-row { grid-template-columns: 1fr; gap: 0; }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .stat-value { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>FB Creator <span>Tools</span></h1>
+  <p>Raih Ratusan Komentar Pakai Pendekatan Konten Berbasis AI</p>
+</div>
+
+<!-- TABS NAVIGATION -->
+<div class="tabs-nav">
+  <button id="btn-tab-caption" class="tab-btn active" onclick="switchTab('caption')">✨ Caption Generator</button>
+  <button id="btn-tab-engagement" class="tab-btn" onclick="switchTab('engagement')">📊 Estimasi Engagement</button>
+</div>
+
+<!-- MAIN CONTAINER -->
+<div class="container">
+
+  <!-- ========================= TAB 1: CAPTION GENERATOR ========================= -->
+  <div id="tab-caption" class="panel active">
+    <div class="card">
+      <div class="card-title">✍️ Racik Caption Facebook Kreatif</div>
+
+      <div class="form-group">
+        <label for="topicInput">Kata Kunci atau Topik Konten</label>
+        <textarea id="topicInput" placeholder="Contoh: tips hemat kuota, jualan baju gamis, meme kopi pagi, tragedi Trisakti 1998..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="captionLength">Target Ukuran Output</label>
+        <select id="captionLength">
+          <option value="short">Pendek (Cocok untuk Reels / Meme)</option>
+          <option value="long">Panjang / Storytelling (Cocok untuk In-Stream / Edukasi)</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" id="generateBtn" onclick="generateCaption()">Generate Caption ✨</button>
+    </div>
+
+    <!-- LOADING ANCHOR -->
+    <div class="loader" id="captionLoader">
+      <div class="spinner"></div>
+      <span>Kecerdasan AI sedang merangkai 5 variasi teks unik...</span>
+    </div>
+
+    <!-- ERROR VIEW -->
+    <div class="error-box" id="captionError"></div>
+
+    <!-- RESULTS BLOCK -->
+    <div class="results-wrapper" id="captionResults">
+      <div class="results-header">
+        <span class="results-label">Hasil Pilihan Terbaik AI:</span>
+        <button class="btn-copy" onclick="copyAllCaptions(this)">📋 Salin Semua</button>
+      </div>
+      <div id="captionList"></div>
+    </div>
+  </div>
+
+
+  <!-- ========================= TAB 2: ENGAGEMENT CALCULATOR ========================= -->
+  <div id="tab-engagement" class="panel">
+    <div class="card">
+      <div class="card-title">📈 Kalkulator Proyeksi Performa</div>
+
+      <div class="input-row">
+        <div class="form-group">
+          <label for="followers">Jumlah Followers</label>
+          <input type="number" id="followers" placeholder="Contoh: 5000" />
+        </div>
+        <div class="form-group">
+          <label for="avgLikes">Rata-rata Likes/Post</label>
+          <input type="number" id="avgLikes" placeholder="Contoh: 150" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="contentType">Format Konten</label>
+        <select id="contentType">
+          <option value="reels">🎬 Facebook Reels (Video Pendek)</option>
+          <option value="image">🖼️ Gambar / Brosur / Meme</option>
+          <option value="text">💬 Status Teks / Diskusi Grup</option>
+        </select>
+      </div>
+
+      <button class="btn btn-green" onclick="calcEngagement()">Hitung Estimasi Performa 📈</button>
+
+      <!-- ESTIMASI RESULTS -->
+      <div id="engagementResults" class="calc-container" style="display:none;">
+        <h3 style="color: #166534; font-size: 14px; font-weight: bold;">Prediksi Distribusi Konten:</h3>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Est. Reach</div>
+            <div class="stat-value" id="res-reach">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Est. Likes</div>
+            <div class="stat-value" id="res-like">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Est. Komen</div>
+            <div class="stat-value" id="res-komen">0</div>
+          </div>
+        </div>
+
+        <div class="er-badge">Engagement Rate Akun: <span id="erValue">0%</span></div>
+        <div class="er-note" id="erNote"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Platform ini gratis didukung oleh
+  <a href="https://rumahwebstudio.my.id/" target="_blank" rel="noopener noreferrer">RumahWeb Studio</a>
+</footer>
+
+<script>
+  // =====================================================
+  const API_KEY = "AQ.Ab8RN6K8HhNTxyAyzhI1E-fLWMPITdOQHDgFiIaQFUHqg4GmJg";
+
+  // =====================================================
+  // ENGINE TABS CONTROLLER
+  // =====================================================
+  function switchTab(tabId) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+    document.getElementById('tab-' + tabId).classList.add('active');
+    document.getElementById('btn-tab-' + tabId).classList.add('active');
+  }
+
+  function formatRibuan(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  // =====================================================
+  async function generateCaption() {
+    const topic = document.getElementById('topicInput').value.trim();
+    const length = document.getElementById('captionLength').value;
+    const btn = document.getElementById('generateBtn');
+    const loader = document.getElementById('captionLoader');
+    const errBox = document.getElementById('captionError');
+    const results = document.getElementById('captionResults');
+
+    if (!topic) {
+      errBox.textContent = "⚠️ Silakan isi kata kunci atau topik kontennya dulu, bre!";
+      errBox.classList.add('show');
+      return;
+    }
+
+    if (API_KEY === "PASTE_API_KEY_DI_SINI" || API_KEY.trim() === "") {
+      errBox.textContent = "🔑 Kamu belum menaruh API Key Gemini valid di dalam kode script JavaScript.";
+      errBox.classList.add('show');
+      return;
+    }
+
+    // Prepare Interface
+    btn.disabled = true;
+    loader.classList.add('show');
+    errBox.classList.remove('show');
+    results.classList.remove('show');
+
+    const targetLength = length === 'short'
+      ? 'PENDEK, padat, ringkas, terdiri dari maksimal 2-3 kalimat saja (sangat pas untuk format FB Reels atau Meme).'
+      : 'PANJANG, mendalam, kaya emosi, bergaya narasi storytelling terstruktur rapi memakai jeda baris baru (pas untuk Video In-Stream atau Edukasi).';
+
+    const promptText = `Kamu adalah pakar copywriting handal spesialis optimasi interaksi media sosial Facebook Indonesia.
+Tugasmu adalah memproduksi 5 opsi variasi caption yang memikat berdasarkan kata kunci dasar berikut: "${topic}".
+
+Ketentuan Aturan Ukuran Teks:
+- Ukuran output wajib diatur dalam skema format: ${targetLength}
+
+STRATEGI KONTEKS (MUTLAK):
+1. Jika kata kunci mengandung muatan tragedi nasional, sejarah kelam (seperti Trisakti 1998, Mei 1998), kabar duka, atau nilai keagamaan, kamu WAJIB memproduksi narasi dengan diksi yang sopan, empati tinggi, tenang, adem, dan penuh rasa hormat. DILARANG menggunakan gaya bahasa candaan, tren gaul slapstick, atau jualan!
+2. Jika topiknya bersifat umum, bisnis UMKM, hiburan santai, atau meme jenaka, kamu dibebaskan memakai gaya bahasa kasual kreator FB Indonesia masa kini (boleh memakai kata: lu, gw, bre, cuan, dsb).
+3. Tiap-tiap opsi variasi wajib ditutup dengan satu kalimat interaktif (Call to Action) berwujud pertanyaan terbuka yang kuat memicu hasrat audiens untuk mengetik komentar balasan.
+4. Output akhir yang kamu hasilkan HARUS berwujud struktur array data JSON murni (kumpulan string) yang diawali dengan [ dan diakhiri dengan ]. Jangan berikan teks penjelasan apa pun di luar kurung siku tersebut!
+
+Wajib presisi mengikuti standar format cetak mentah ini:
+["opsi caption satu", "opsi caption dua", "opsi caption tiga", "opsi caption empat", "opsi caption lima"]`;
+
+    try {
+      // Menggunakan API version v1 stabil dengan model flash terbaru agar tidak di-deprecate oleh Google
+      const endpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: promptText }] }]
+        })
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        // Jika model 2.5 masih adaptasi di region tertentu, otomatis fallback ke model umum
+        if (response.status === 404) {
+          const fallbackEndpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+          const fallbackResponse = await fetch(fallbackEndpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
+          });
+          const fallbackData = await fallbackResponse.json();
+          if (!fallbackResponse.ok) throw new Error(fallbackData?.error?.message || 'Model tidak didukung.');
+          return processAIResponse(fallbackData);
+        }
+        throw new Error(responseData?.error?.message || 'Koneksi API bermasalah.');
+      }
+
+      processAIResponse(responseData);
+
+    } catch (err) {
+      console.error(err);
+      errBox.innerHTML = `❌ <b>Gagal memproses AI:</b> Terjadi kendala respon server.<br><br><small>Detail Error: ${err.message}</small>`;
+      errBox.classList.add('show');
+    } finally {
+      btn.disabled = false;
+      loader.classList.remove('show');
+    }
+
+    function processAIResponse(data) {
+      let clearText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+      const matchJson = clearText.match(/\[[\s\S]*\]/);
+      if (matchJson) {
+        clearText = matchJson[0];
+      } else {
+        throw new Error("Format array teks gagal divalidasi oleh sistem.");
+      }
+      const arrayCaptions = JSON.parse(clearText);
+      renderOutputCaptions(arrayCaptions);
+      results.classList.add('show');
+    }
+  }
+
+  function renderOutputCaptions(captions) {
+    const targetDiv = document.getElementById('captionList');
+    targetDiv.innerHTML = '';
+
+    captions.forEach((captionText, index) => {
+      const box = document.createElement('div');
+      box.className = 'caption-item';
+
+      box.innerHTML = `
+        <div class="caption-num">Variasi Opsi ${index + 1}</div>
+        <div class="caption-text" id="text-target-${index}"></div>
+        <div class="caption-footer">
+          <button class="btn-copy" onclick="copySingleCaption(${index}, this)">📋 Salin Teks</button>
+        </div>
+      `;
+      targetDiv.appendChild(box);
+      // Menggunakan textContent agar emoji tersaring aman tanpa merusak struktur DOM
+      document.getElementById(`text-target-${index}`).textContent = captionText;
+    });
+  }
+
+  function copySingleCaption(index, buttonElement) {
+    const targetElement = document.getElementById('text-target-' + index);
+    if (!targetElement) return;
+    executeCopyAction(targetElement.innerText, buttonElement);
+  }
+
+  function copyAllCaptions(buttonElement) {
+    const textBlocks = document.querySelectorAll('.caption-text');
+    let compiledText = '';
+    textBlocks.forEach((block, idx) => {
+      compiledText += `[Variasi ${idx + 1}]\n${block.innerText}\n\n`;
+    });
+    executeCopyAction(compiledText.trim(), buttonElement);
+  }
+
+  function executeCopyAction(textValue, elementBtn) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(textValue)
+        .then(() => triggerFlashState(elementBtn))
+        .catch(() => fallbackCopyEngine(textValue, elementBtn));
+    } else {
+      fallbackCopyEngine(textValue, elementBtn);
+    }
+  }
+
+  function fallbackCopyEngine(text, btn) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      triggerFlashState(btn);
+    } catch (e) {
+      alert('Gagal menyalin otomatis, silakan salin teks secara manual.');
+    }
+    document.body.removeChild(textArea);
+  }
+
+  function triggerFlashState(btn) {
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '✅ Berhasil Tersalin!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.classList.remove('copied');
+    }, 1800);
+  }
+
+  // =====================================================
+  // TAB 2 CORE LOGIC: ENGAGEMENT ENGINE
+  // =====================================================
+  function calcEngagement() {
+    const followers = parseInt(document.getElementById('followers').value) || 0;
+    const avgLikes = parseInt(document.getElementById('avgLikes').value) || 0;
+    const contentType = document.getElementById('contentType').value;
+
+    if (!followers || !avgLikes) {
+      alert('Harap masukkan angka jumlah followers dan rata-rata likes terlebih dahulu ya, bre!');
+      return;
+    }
+
+    let rateActual = (avgLikes / followers) * 100;
+
+    let multiplierReach = 0.15;
+    let multiplierLikeBoost = 1.1;
+    let multiplierKomen = 0.2;
+    let deskripsiKonteks = '';
+
+    if (contentType === 'reels') {
+      multiplierReach = 0.45;
+      multiplierLikeBoost = 1.25;
+      multiplierKomen = 0.12;
+      deskripsiKonteks = 'Format Reels sedang diprioritaskan algoritma Meta FB. Reach organik potensial menjangkau non-followers secara berlipat.';
+    } else if (contentType === 'image') {
+      multiplierReach = 0.18;
+      multiplierLikeBoost = 1.05;
+      multiplierKomen = 0.18;
+      deskripsiKonteks = 'Konten gambar/meme memiliki tingkat retensi share tinggi di komunitas FB jika diksi visualnya relate.';
+    } else {
+      multiplierReach = 0.10;
+      multiplierLikeBoost = 0.85;
+      multiplierKomen = 0.45;
+      deskripsiKonteks = 'Status teks pendek sangat minim jangkauan luas, namun sangat efektif mengikat ruang diskusi di kolom komentar.';
+    }
+
+    let reachFinal = Math.round((followers * multiplierReach) + (avgLikes * 4.5));
+    let likeFinal = Math.round(avgLikes * multiplierLikeBoost);
+    let komenFinal = Math.round(likeFinal * multiplierKomen);
+
+    // Render Data to UI
+    document.getElementById('res-reach').innerText = formatRibuan(reachFinal);
+    document.getElementById('res-like').innerText = formatRibuan(likeFinal);
+    document.getElementById('res-komen').innerText = formatRibuan(komenFinal);
+
+    document.getElementById('erValue').innerText = rateActual.toFixed(2) + '%';
+    document.getElementById('erNote').innerText = deskripsiKonteks;
+
+    document.getElementById('engagementResults').style.display = 'block';
+  }
+</script>
+
+
+</body>
+</html>
