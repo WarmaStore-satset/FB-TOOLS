@@ -527,23 +527,11 @@
 </footer>
 
 <script>
-  const p1 = "AQ.Ab8RN6L-ehntfZY";
-  const p2 = "-crqimo4MxhEZC-Dvh";
-  const p3 = "yoEK_8YMzG8MmnoLg";
-  const masterKey = p1 + p2 + p3;
+  const p1 = "AIzaSyBmoLD0SjcsJv";
+  const p2 = "Qt_UBcOn5a8gVjN";
+  const p3 = "piBSoU";
 
-  const currentDomain = window.location.hostname;
-
-  let API_KEY = "";
-
-
-  if (currentDomain === "creatortools-fb.vercel.app") {
-      API_KEY = masterKey;
-  } else {
-      API_KEY = "AKSES_RUMAHWEB_DITOLAK"; 
-      console.error("Sistem Keamanan RumahWeb Studio: Akses API Key ilegal terdeteksi! Waduh bro, dilarang maling API Key RumahWeb ya!");
-  }
-
+  const API_KEY = p1 + p2 + p3;
   
   function switchTab(tabId) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
