@@ -3,41 +3,44 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method tidak diizinkan, bre!' });
   }
 
-  const GROQ_API_KEY = process.env.GROQ_API_KEY;
+  // Mengambil API Key OpenRouter dari Vercel
+  const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
 
-  if (!GROQ_API_KEY) {
-    return res.status(500).json({ error: 'API Key Groq belum disetting di Environment Variables Vercel.' });
+  if (!OPENROUTER_API_KEY) {
+    return res.status(500).json({ error: 'API Key OpenRouter belum disetting di Vercel.' });
   }
 
   try {
     const { promptText } = req.body;
 
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    // Tembak ke OpenRouter API
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${GROQ_API_KEY}`,
+        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
+        // Kita pake Llama 3.3 70B (Versi raksasa yang pinter, panjang, dan kreatif!)
+        model: "meta-llama/llama-3.3-70b-instruct", 
         messages: [
           { 
             role: "system", 
-            content: "You are a strict JSON generator. You must ONLY output a raw JSON array of strings, exactly matching the requested format. NEVER wrap the response in markdown code blocks like ```json ... ```. NEVER include any conversational filler, intro, or outro text. Just start with [ and end with ]." 
+            content: "You are a professional JSON writer. You must ONLY output a valid JSON array of strings, starting with [ and ending with ]. Never include markdown backticks or any conversational text. Follow the length instructions strictly and write rich, engaging, emoji-filled content." 
           },
           { 
             role: "user", 
             content: promptText 
           }
         ],
-        temperature: 0.4 // Diturunkan biar AI lebih patuh aturan format dan gak ngaco
+        temperature: 0.7 // Dinaikin dikit biar kosa katanya kaya dan gak kaku
       })
     });
 
     const responseData = await response.json();
 
     if (!response.ok) {
-      throw new Error(responseData?.error?.message || 'Server Groq bermasalah.');
+      throw new Error(responseData?.error?.message || 'Server OpenRouter bermasalah.');
     }
 
     const aiText = responseData.choices[0].message.content;
