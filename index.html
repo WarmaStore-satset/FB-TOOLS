@@ -443,7 +443,7 @@
         </select>
       </div>
 
-      <button class="btn btn-primary" id="generateBtn" onclick="generateCaption()">Generate Caption ✨</button>
+      <button class="btn btn-primary" id="generateBtn" onclick="generateCaption()">Generate Caption  ✨</button>
     </div>
 
     <!-- LOADING ANCHOR -->
@@ -527,12 +527,7 @@
 </footer>
 
 <script>
-  const p1 = "AIzaSyBmoLD0Sj";
-  const p2 = "csJvQt_UBcOn5a";
-  const p3 = "8gVjNpiBSoU";
 
-  const API_KEY = p1 + p2 + p3;
-  
   function switchTab(tabId) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -556,12 +551,6 @@
 
     if (!topic) {
       errBox.textContent = "⚠️ Silakan isi kata kunci atau topik kontennya dulu, bre!";
-      errBox.classList.add('show');
-      return;
-    }
-
-    if (API_KEY === "PASTE_API_KEY_DI_SINI" || API_KEY.trim() === "") {
-      errBox.textContent = "🔑 Kamu belum menaruh API Key Gemini valid di dalam kode script JavaScript.";
       errBox.classList.add('show');
       return;
     }
@@ -592,35 +581,32 @@ Wajib presisi mengikuti standar format cetak mentah ini:
 ["opsi caption satu", "opsi caption dua", "opsi caption tiga", "opsi caption empat", "opsi caption lima"]`;
 
     try {
-      const endpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+      const endpoint = '/api/generate';
 
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: promptText }] }]
-        })
+        body: JSON.stringify({ promptText: promptText })
       });
 
       const responseData = await response.json();
 
       if (!response.ok) {
-        // Jika model 2.5 masih adaptasi di region tertentu, otomatis fallback ke model umum
-        if (response.status === 404) {
-          const fallbackEndpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
-          const fallbackResponse = await fetch(fallbackEndpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contents: [{ parts: [{ text: promptText }] }] })
-          });
-          const fallbackData = await fallbackResponse.json();
-          if (!fallbackResponse.ok) throw new Error(fallbackData?.error?.message || 'Model tidak didukung.');
-          return processAIResponse(fallbackData);
-        }
-        throw new Error(responseData?.error?.message || 'Koneksi API bermasalah.');
+        throw new Error(responseData?.error || 'Koneksi API bermasalah.');
       }
 
-      processAIResponse(responseData);
+
+      let clearText = responseData.text || '';
+      const matchJson = clearText.match(/\[[\s\S]*\]/);
+      if (matchJson) {
+        clearText = matchJson[0];
+      } else {
+        throw new Error("Format array teks gagal divalidasi oleh sistem.");
+      }
+
+      const arrayCaptions = JSON.parse(clearText);
+      renderOutputCaptions(arrayCaptions);
+      results.classList.add('show');
 
     } catch (err) {
       console.error(err);
@@ -629,19 +615,6 @@ Wajib presisi mengikuti standar format cetak mentah ini:
     } finally {
       btn.disabled = false;
       loader.classList.remove('show');
-    }
-
-    function processAIResponse(data) {
-      let clearText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-      const matchJson = clearText.match(/\[[\s\S]*\]/);
-      if (matchJson) {
-        clearText = matchJson[0];
-      } else {
-        throw new Error("Format array teks gagal divalidasi oleh sistem.");
-      }
-      const arrayCaptions = JSON.parse(clearText);
-      renderOutputCaptions(arrayCaptions);
-      results.classList.add('show');
     }
   }
 
@@ -661,7 +634,6 @@ Wajib presisi mengikuti standar format cetak mentah ini:
         </div>
       `;
       targetDiv.appendChild(box);
-      // Menggunakan textContent agar emoji tersaring aman tanpa merusak struktur DOM
       document.getElementById(`text-target-${index}`).textContent = captionText;
     });
   }
@@ -758,7 +730,6 @@ Wajib presisi mengikuti standar format cetak mentah ini:
     let likeFinal = Math.round(avgLikes * multiplierLikeBoost);
     let komenFinal = Math.round(likeFinal * multiplierKomen);
 
-    // Render Data to UI
     document.getElementById('res-reach').innerText = formatRibuan(reachFinal);
     document.getElementById('res-like').innerText = formatRibuan(likeFinal);
     document.getElementById('res-komen').innerText = formatRibuan(komenFinal);
