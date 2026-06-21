@@ -527,9 +527,9 @@
 </footer>
 
 <script>
-  const p1 = "AIzaSyBmoLD0SjcsJv";
-  const p2 = "Qt_UBcOn5a8gVjN";
-  const p3 = "piBSoU";
+  const p1 = "AIzaSyDeezRlQF";
+  const p2 = "ycgwzhCtrWL9rYcw";
+  const p3 = "fRJMEeY1w";
 
   const API_KEY = p1 + p2 + p3;
   
@@ -592,7 +592,6 @@ Wajib presisi mengikuti standar format cetak mentah ini:
 ["opsi caption satu", "opsi caption dua", "opsi caption tiga", "opsi caption empat", "opsi caption lima"]`;
 
     try {
-      // Menggunakan API version v1 stabil dengan model flash terbaru agar tidak di-deprecate oleh Google
       const endpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
       const response = await fetch(endpoint, {
