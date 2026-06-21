@@ -1,10 +1,8 @@
 export default async function handler(req, res) {
-  // Hanya izinkan metode POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method tidak diizinkan!' });
   }
 
-  // Mengambil API Key Groq yang disimpan aman di Environment Variables Vercel
   const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
   if (!GROQ_API_KEY) {
@@ -14,7 +12,6 @@ export default async function handler(req, res) {
   try {
     const { promptText } = req.body;
 
-    // Menembak langsung ke Server Groq (Menggunakan model Llama 3 8B)
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -23,6 +20,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: "llama-3.1-8b-instant",
+        response_format: { type: "json_object" },
         messages: [{ role: "user", content: promptText }],
         temperature: 0.7
       })
