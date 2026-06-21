@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method tidak diizinkan!' });
+    return res.status(405).json({ error: 'Method tidak diizinkan, bre!' });
   }
 
   const GROQ_API_KEY = process.env.GROQ_API_KEY;
@@ -20,9 +20,17 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: "llama-3.1-8b-instant",
-        response_format: { type: "json_object" },
-        messages: [{ role: "user", content: promptText }],
-        temperature: 0.7
+        messages: [
+          { 
+            role: "system", 
+            content: "You are a strict JSON generator. You must ONLY output a raw JSON array of strings, exactly matching the requested format. NEVER wrap the response in markdown code blocks like ```json ... ```. NEVER include any conversational filler, intro, or outro text. Just start with [ and end with ]." 
+          },
+          { 
+            role: "user", 
+            content: promptText 
+          }
+        ],
+        temperature: 0.4 // Diturunkan biar AI lebih patuh aturan format dan gak ngaco
       })
     });
 
@@ -32,10 +40,8 @@ export default async function handler(req, res) {
       throw new Error(responseData?.error?.message || 'Server Groq bermasalah.');
     }
 
-    // Ambil output teks AI dari struktur data Groq
     const aiText = responseData.choices[0].message.content;
 
-    // Kirim hasilnya kembali ke index.html
     return res.status(200).json({ text: aiText });
 
   } catch (err) {
