@@ -23,17 +23,27 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         // Kita pake Llama 3.3 70B (Versi raksasa yang pinter, panjang, dan kreatif!)
         model: "meta-llama/llama-3.3-70b-instruct", 
-        messages: [
+      messages: [
           { 
             role: "system", 
-            content: "You are a professional JSON writer. You must ONLY output a valid JSON array of strings, starting with [ and ending with ]. Never include markdown backticks or any conversational text. Follow the length instructions strictly and write rich, engaging, emoji-filled content." 
+            content: `You are a professional social media copywriter. You must ONLY output a valid JSON array of strings, starting with [ and ending with ]. 
+Never include markdown backticks like \`\`\`json.
+If the user wants a LONG caption, you MUST write it in a storytelling format with multiple short paragraphs. Use '\\n\\n' inside the JSON string to create line breaks/enters between paragraphs so it doesn't look like a single block of text. Make it rich, engaging, emotional, and filled with emojis.` 
+          },
+          {
+            role: "user",
+            content: 'Contoh topik: "Tips Olahraga"'
+          },
+          {
+            role: "assistant",
+            content: '["Halo bre! 🏃‍♂️\\n\\nBanyak yang nanya ke gw gimana konsisten olahraga. Dulu gw juga males banget, tapi pas coba trik ini semua berubah.\\n\\nPertama, mulai dari 10 menit aja sehari, jangan langsung berat. Kedua, cari temen bareng.\\n\\nKalau lu gimana, udah olahraga belum hari ini? 🤔", "Opsi dua dst..."]'
           },
           { 
             role: "user", 
             content: promptText 
           }
         ],
-        temperature: 0.7 // Dinaikin dikit biar kosa katanya kaya dan gak kaku
+        temperature: 0.85 // Dinaikin dikit lagi biar makin kreatif nulis panjang
       })
     });
 
